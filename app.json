@@ -1,11 +1,11 @@
 {
   "expo": {
     "name": "reactnative",
-    "slug": "reactnative",
+    "slug": "playzo",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
-    "scheme": "myapp",
+    "scheme": "Playzo",
     "userInterfaceStyle": "automatic",
     "splash": {
       "image": "./assets/images/splash.png",
