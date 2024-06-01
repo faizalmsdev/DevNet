@@ -25,13 +25,15 @@ const SignIn = () => {
     <SafeAreaView className="bg-primary h-full">
       <ScrollView>
         <View className="w-full justify-center min-h-[85vh] px-4 my-6">
-          <Image 
-            source={images.logo}
-            resizeMode='contain'
-            className="w-[115px] h-[35px]"
-          />
+        <View style={{ alignItems: 'center' }}>
+            <Image
+              source={images.logo}
+              resizeMode="contain"
+              style={{ width: 115, height: 35 }}
+            />
+          </View>
 
-          <Text className="text-2xl text-white text-semibold mt-10 font-psemibold">Log in to Aura</Text>
+          <Text className="text-2xl text-secondary text-semibold mt-10 font-psemibold">Log in to DevNet</Text>
 
           <FormField 
             title="Email"
