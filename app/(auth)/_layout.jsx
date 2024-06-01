@@ -20,6 +20,13 @@ const AuthLayout = () => {
                         headerShown : false
                     }}
                 />
+
+                <Stack.Screen 
+                    name='otp-verification'
+                    options = {{
+                        headerShown : false
+                    }}
+                />
             </Stack>
 
             <StatusBar 
