@@ -33,13 +33,15 @@ export default function App() {
               resizeMode='contain'
             />
           </View> */}
-          <Text className="text-sm font-pregular text-gray-100 mt-7 text-center">Welcome to DevNet, where innovation meets collaboration. Let's bring your projects to life together.</Text>
+          {/* <Text className="text-sm font-pregular text-gray-100 mt-7 text-center">Welcome to DevNet, where innovation meets collaboration. Let's bring your projects to life together.</Text> */}
           
-          <CustomButtons 
-            title="Continue with Email"
-            handlePress={()=> router.push('/sign-in')}
-            containerStyles = "w-full mt-7"
-          />
+          <View className="absolute bottom-4 w-full px-4">
+            <CustomButtons 
+              title="Continue with Email"
+              handlePress={() => router.push('/sign-in')}
+              containerStyles="w-full mt-7"
+            />
+          </View>
 
         </View>
       </ScrollView>
