@@ -108,7 +108,7 @@ const SignUp = () => {
               <Text className="text-lg text-gray-100 font-pregular">
                 Already have an account?
               </Text>
-              <Link href="/auth/sign-in" className="text-lg font-psemibold text-secondary">
+              <Link href="/sign-in" className="text-lg font-psemibold text-secondary">
                 Sign In
               </Link>
             </View>
