@@ -1,12 +1,10 @@
-import { View, Text, ScrollView,Image } from 'react-native'
-import React, { useState } from 'react'
-import { SafeAreaView } from 'react-native-safe-area-context'
+import React, { useState } from 'react';
+import { SafeAreaView, ScrollView, View, Text, Image, KeyboardAvoidingView, Platform } from 'react-native';
+import { Link } from '@react-navigation/native'; // Assuming Expo uses React Navigation for routing
 
-import CustomButton from "../../components/CustomButtons"
-
-import {images} from "../../constants";
+import CustomButton from "../../components/CustomButtons";
+import { images } from "../../constants";
 import FormField from '../../components/FormField';
-import { Link } from 'expo-router';
 
 // Contexts files 
 import { useAuth } from '../../contexts/AuthContext';
@@ -14,24 +12,26 @@ import { useAuth } from '../../contexts/AuthContext';
 const SignIn = () => {
 
   // Contexts calling 
-
   const { signInForm, setSignInForm, isSignInSubmitting, setIsSignInSubmitting } = useAuth();
 
   const submit = () => {
-
+    // Add your submit logic here
   }
 
   return (
-    <SafeAreaView className="bg-primary h-full">
-      <ScrollView>
-        <View className="w-full justify-center min-h-[85vh] px-4 my-6">
-        <View style={{ alignItems: 'center' }}>
+    <SafeAreaView style={{ flex: 1, backgroundColor: '#161622' }}>
+      <KeyboardAvoidingView
+        style={{ flex: 1 }}
+        behavior={Platform.OS === 'ios' ? 'padding' : null}
+        keyboardVerticalOffset={Platform.OS === 'ios' ? 40 : 0}
+      >
+        <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
+          <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', paddingHorizontal: 20 }}>
             <Image
               source={images.logo}
               resizeMode="contain"
               style={{ width: 115, height: 35 }}
             />
-          </View>
 
           <Text className="text-2xl text-secondary text-semibold mt-10 font-psemibold">Log in to DevNet</Text>
 
@@ -54,20 +54,19 @@ const SignIn = () => {
           <CustomButton 
             title="Sign In"
             handlePress={submit}
-            containerStyles="mt-7"
+            containerStyles="mt-7 w-full"
             isLoading={isSignInSubmitting}
           />
 
-          <View className="justify-center pt-5 flex-row gap-2">
-            <Text className="text-lg text-gray-100 font-pregular">
-              Don't have account?
-            </Text>
-            <Link href="/sign-up" className='text-lg font-psemibold text-secondary'>Sign Up</Link>
+            <View className="justify-center pt-5 flex-row gap-2">
+              <Text  className="text-lg text-gray-100 font-pregular">Don't have an account?</Text>
+              <Link to="/sign-up" style={{ fontSize: 18,lineHeight : 28, color: '#FF9C01', fontWeight: 'bold' }}> Sign Up</Link>
+            </View>
           </View>
-        </View>
-      </ScrollView>
+        </ScrollView>
+      </KeyboardAvoidingView>
     </SafeAreaView>
-  )
+  );
 }
 
-export default SignIn
+export default SignIn;
