@@ -7,14 +7,14 @@ import CustomButton from '../../components/CustomButtons';
 import { images } from '../../constants';
 import FormField from '../../components/FormField';
 
-const SignUp = () => {
-  const [form, setForm] = useState({
-    username: '',
-    contact: '',
-    password: '',
-  });
+// Context file import 
+import { useAuth } from '../../contexts/AuthContext';
 
-  const [isSubmitting, setIsSubmitting] = useState(false);
+const SignUp = () => {
+
+  // Contexts calling 
+  const { signUpForm, setSignUpForm, isSignUpSubmitting, setIsSignUpSubmitting } = useAuth();
+
   const router = useRouter();
 
   const validateEmail = (email) => {
@@ -28,7 +28,7 @@ const SignUp = () => {
   };
 
   const submit = () => {
-    const { username, contact, password } = form;
+    const { username, contact, password } = signUpForm;
 
     if (!username || !contact || !password) {
       Alert.alert('Error', 'All fields are required');
@@ -46,12 +46,12 @@ const SignUp = () => {
       return;
     }
 
-    setIsSubmitting(true);
+    setIsSignUpSubmitting(true);
 
     // Simulate API call and navigate to verification screen
     // Simulate API call and navigate to verification screen
     setTimeout(() => {
-      setIsSubmitting(false);
+      setIsSignUpSubmitting(false);
       // Navigate to the verification page
       router.push('otp-verification');
     }, 2000);
@@ -76,23 +76,23 @@ const SignUp = () => {
 
           <FormField
             title="Username"
-            value={form.username}
-            handleChangeText={(e) => setForm({ ...form, username: e })}
+            value={signUpForm.username}
+            handleChangeText={(e) => setSignUpForm({ ...signUpForm, username: e })}
             otherStyles="mt-7"
           />
 
           <FormField
             title="Phone Number/Email"
-            value={form.contact}
-            handleChangeText={(e) => setForm({ ...form, contact: e })}
+            value={signUpForm.contact}
+            handleChangeText={(e) => setSignUpForm({ ...signUpForm, contact: e })}
             otherStyles="mt-7"
             keyboardType="email-address"
           />
 
           <FormField
             title="Password"
-            value={form.password}
-            handleChangeText={(e) => setForm({ ...form, password: e })}
+            value={signUpForm.password}
+            handleChangeText={(e) => setSignUpForm({ ...signUpForm, password: e })}
             otherStyles="mt-7"
             secureTextEntry={true}
           />
@@ -101,7 +101,7 @@ const SignUp = () => {
             title="Sign Up"
             handlePress={submit}
             containerStyles="mt-7"
-            isLoading={isSubmitting}
+            isLoading={isSignUpSubmitting}
           />
 
           <View className="justify-center pt-5 flex-row gap-2">

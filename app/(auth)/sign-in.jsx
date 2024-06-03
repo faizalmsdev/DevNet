@@ -15,7 +15,7 @@ const SignIn = () => {
 
   // Contexts calling 
 
-  const { form, setForm, isSubmitting, setIsSubmitting } = useAuth();
+  const { signInForm, setSignInForm, isSignInSubmitting, setIsSignInSubmitting } = useAuth();
 
   const submit = () => {
 
@@ -37,16 +37,16 @@ const SignIn = () => {
 
           <FormField 
             title="Email"
-            value={form.email}
-            handleChangeText={(e) => setForm({...form, email: e})}
+            value={signInForm.email}
+            handleChangeText={(e) => setSignInForm({...signInForm, email: e})}
             otherStyles = "mt-7"
             keyboardType = "email-address"
           />
 
           <FormField 
             title="Password"
-            value={form.password}
-            handleChangeText={(e) => setForm({...form, password: e})}
+            value={signInForm.password}
+            handleChangeText={(e) => setSignInForm({...signInForm, password: e})}
             otherStyles = "mt-7"
             // keyboardType = "email-address"
           />
@@ -55,7 +55,7 @@ const SignIn = () => {
             title="Sign In"
             handlePress={submit}
             containerStyles="mt-7"
-            isLoading={isSubmitting}
+            isLoading={isSignInSubmitting}
           />
 
           <View className="justify-center pt-5 flex-row gap-2">
