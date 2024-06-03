@@ -8,14 +8,14 @@ import {images} from "../../constants";
 import FormField from '../../components/FormField';
 import { Link } from 'expo-router';
 
+// Contexts files 
+import { useAuth } from '../../contexts/AuthContext';
+
 const SignIn = () => {
 
-  const [ form , setForm ] = useState({
-    email : '',
-    password : ''
-  })
+  // Contexts calling 
 
-  const [isSubmitting, setIsSubmitting] = useState(false)
+  const { form, setForm, isSubmitting, setIsSubmitting } = useAuth();
 
   const submit = () => {
 
